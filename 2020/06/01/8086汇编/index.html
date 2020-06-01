@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>8086汇编 | Blog1_Yy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、汇编语言简介 汇编语言（assembly language）是一种用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，亦称为符号语言。在汇编语言中，用助记符代替机器指令的操作码，用地址符号或标号代替指令或操作数的地址。在不同的设备中，汇编语言对应着不同的机器语言指令集，通过汇编过程转换成机器指令。机器指令的繁琐、晦涩和难以阅读导致汇编语言的出现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8086汇编">
+<meta property="og:url" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/index.html">
+<meta property="og:site_name" content="Blog1_Yy">
+<meta property="og:description" content="一、汇编语言简介 汇编语言（assembly language）是一种用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，亦称为符号语言。在汇编语言中，用助记符代替机器指令的操作码，用地址符号或标号代替指令或操作数的地址。在不同的设备中，汇编语言对应着不同的机器语言指令集，通过汇编过程转换成机器指令。机器指令的繁琐、晦涩和难以阅读导致汇编语言的出现。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E8%AF%AD%E8%A8%80%E5%85%B3%E7%B3%BB.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/CPU%E7%9A%84%E5%85%B8%E5%9E%8B%E6%9E%84%E6%88%90.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E7%AE%A1%E8%84%9A.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E6%80%BB%E7%BA%BF.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E5%9C%B0%E5%9D%80%E5%8C%BA%E5%9F%9F.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E5%9C%B0%E5%9D%80%E5%AF%B9%E5%BA%94.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E5%AF%84%E5%AD%98%E5%99%A8.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/eg.png">
+<meta property="article:published_time" content="2020-06-01T01:18:46.295Z">
+<meta property="article:modified_time" content="2020-06-01T01:36:03.402Z">
+<meta property="article:author" content="YY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/%E8%AF%AD%E8%A8%80%E5%85%B3%E7%B3%BB.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog1_Yy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog1_Yy</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-8086汇编" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/01/8086%E6%B1%87%E7%BC%96/" class="article-date">
+  <time datetime="2020-06-01T01:18:46.295Z" itemprop="datePublished">2020-06-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      8086汇编
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、汇编语言简介"><a href="#一、汇编语言简介" class="headerlink" title="一、汇编语言简介"></a>一、汇编语言简介</h1><ol>
+<li><p>汇编语言（assembly language）是一种用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，亦称为符号语言。在汇编语言中，用助记符代替机器指令的操作码，用地址符号或标号代替指令或操作数的地址。在不同的设备中，汇编语言对应着不同的机器语言指令集，通过汇编过程转换成机器指令。机器指令的繁琐、晦涩和难以阅读导致汇编语言的出现。</p>
+<a id="more"></a></li>
+<li><p>关系<br>高级语言可以通过编译得到汇编语言\机器语言，但汇编语言\机器语言几乎不可能还原成高级语言<br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/%E8%AF%AD%E8%A8%80%E5%85%B3%E7%B3%BB.png" alt><br>采用高级语言C++和汇编语言编写同一个功能：将a+b的结果赋值给c，然后在屏幕上打印c的结果<br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/%E8%AF%AD%E8%A8%80%E5%AF%B9%E6%AF%94.png" alt></p>
+</li>
+<li><p>特点<br> 可以直接访问、控制各种硬件设备，比如存储器、CPU等，能最大限度地发挥硬件的功能<br> 汇编指令是机器指令的助记符,同机器指令一一对应。每一种CPU都有自己的机器指令集\汇编指令集，所以汇编语言不具备可移植性；8086汇编就是intel 8086微处理器上用的汇编语言。<br> 知识点过多，开发者需要对CPU等硬件结构有所了解，不易于编写、调试、维护<br> 不区分大小写，比如mov和MOV是一样的</p>
+</li>
+<li><p>组成：<br> 汇编指令：机器码的助记符，有对应的机器码。<br> 伪指令：没有对应的机器码，由编译器执行，计算机并不执行。<br> 其他符号：如+、-、*、/等，由编译器识别，没有对应的机器码。</p>
+</li>
+<li><p>用途<br> 编写驱动程序、操作系统（比如Linux内核的某些关键部分）<br> 对性能要求极高的程序或者代码片段，可与高级语言混合使用（内联汇编）<br> 软件安全，病毒分析与防治，黑客，逆向：加壳\脱壳\破解\外挂\免杀\加密解密\漏洞<br> 是理解整个计算机系统的最佳起点和最有效途径<br> 为编写高效代码打下基础<br> 弄清代码的本质：sizeof；++a + ++a + ++a；switch和if的效率究竟谁高？为什么？</p>
+</li>
+</ol>
+<h1 id="二、计算机程序的执行过程"><a href="#二、计算机程序的执行过程" class="headerlink" title="二、计算机程序的执行过程"></a>二、计算机程序的执行过程</h1><p>CPU的典型构成<br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/CPU%E7%9A%84%E5%85%B8%E5%9E%8B%E6%9E%84%E6%88%90.png" alt><br>程序执行过程<br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png" alt><br>最为关键的是需要了解内存和CPU；在学习汇编语言过程中，遇到的绝大部分指令都是跟内存、CPU有关的</p>
+<h2 id="1-存储器"><a href="#1-存储器" class="headerlink" title="1 存储器"></a>1 存储器</h2><p>存储器是用来存储程序和各种数据信息的记忆部件。存储器可分为主存储器(简称主存或内存)和辅助存储器(简称辅存或外存)两大类。和CPU直接交换信息的是主存，计算机中所有程序的运行都是在内存中进行的。</p>
+<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><p>是一根根导线的集合；<br>每一个CPU芯片都有许多管脚，这些管脚和总线相连，CPU通过总线跟外部器件进行交互<br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/%E7%AE%A1%E8%84%9A.png" alt></p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>地址总线：用来指定在RAM中存储的数据的地址；它的宽度决定了CPU的寻址能力；设宽度为n则寻址能力为2^n (单位是Byte) (关于寻址见后文)；8086地址总线宽度为20<br>数据总线：在CPU与RAM之间来回传送需要处理或是需要储存的数据；它的宽度决定了CPU的单次数据传送量；单位是bit；8086数据总线宽度16，所以单词最大传递2个字节的数据<br>控制总线：将微处理器控制单元的信号，传送到周边设备；它的宽度决定了CPU对其他器件的控制能力、能有多少种控制<br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/%E6%80%BB%E7%BA%BF.png" alt></p>
+<h3 id="内存地址及区域划分"><a href="#内存地址及区域划分" class="headerlink" title="内存地址及区域划分"></a>内存地址及区域划分</h3><p><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/%E5%9C%B0%E5%9D%80%E5%8C%BA%E5%9F%9F.png" alt><br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/%E5%9C%B0%E5%9D%80%E5%AF%B9%E5%BA%94.png" alt></p>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><p>CPU访问内存单元时，要给出内存单元的地址<br>8086有20位地址总线，可以传送20位的地址，1M的寻址能力<br>但它又是16位结构的CPU，它内部能够一次性处理、传输、暂时存储的地址为16位。如果将地址从内部简单地发出，那么它只能送出16位的地址，表现出来的寻址能力只有64KB</p>
+<h3 id="20位物理地址生成原理"><a href="#20位物理地址生成原理" class="headerlink" title="20位物理地址生成原理"></a>20位物理地址生成原理</h3><p><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/1.png" alt><br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/2.png" alt><br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/3.png" alt><br>8086是用“起始地址（段地址×16） + 偏移地址 = 物理地址”的方式给出物理地址<br>为了开发方便，我们可以采取分段的方法来管理内存，比如：<br>    地址10000H~100FFH的内存单元组成一个段，该段的起始地址为10000H，段地址为1000H，大小为100H<br>    地址10000H1007FH、10080H100FFH的内存单元组成2个段，它们的起始地址为：10000H和10080H，段地址为1000H和1008H，大小都为80H</p>
+<h2 id="2-CPU寄存器"><a href="#2-CPU寄存器" class="headerlink" title="2 CPU寄存器"></a>2 CPU寄存器</h2><ol>
+<li>可以通过改变寄存器的内容来实现对CPU的控制</li>
+<li>不同的CPU，寄存器的个数、结构不相同（8086是16位结构的CPU，有14个寄存器，都是16位的寄存器）<br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/%E5%AF%84%E5%AD%98%E5%99%A8.png" alt><h3 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h3></li>
+<li>AX、BX、CX、DX这4个寄存器通常用来存放一般性的数据，称为通用寄存器（有时也有特定用途）</li>
+<li>通常，CPU会先将内存中的数据存储到通用寄存器中，然后再对通用寄存器中的数据进行运算<br>例子：假设内存中有块红色内存空间的值是3，现在想把它的值加1，并将结果存储到蓝色内存空间<br> CPU首先会将红色内存空间的值放到AX寄存器中：mov ax,红色内存空间<br> 然后让AX寄存器与1相加：add ax,1<br> 最后将值赋值给内存空间：mov 蓝色内存空间,ax<br><img src="/2020/06/01/8086%E6%B1%87%E7%BC%96/eg.png" alt><br>…</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/01/8086%E6%B1%87%E7%BC%96/" data-id="ckavu6poj0000aguah02zgdri" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/01/IDA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          IDA
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/01/Linux-Git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux-Git</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/01/ADworld-wp/">ADworld-wp</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/IDA/">IDA</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/8086%E6%B1%87%E7%BC%96/">8086汇编</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/Linux-Git/">Linux-Git</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 YY<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

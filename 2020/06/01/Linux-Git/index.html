@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Linux-Git | Blog1_Yy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="LinuxLinux文件基本属性使用ll或者ls –l命令来显示一个文件的属性以及文件所属的用户和组对于 root 用户来说，一般情况下，文件的权限对其不起作用更改文件属性（略）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux-Git">
+<meta property="og:url" content="http://yoursite.com/2020/06/01/Linux-Git/index.html">
+<meta property="og:site_name" content="Blog1_Yy">
+<meta property="og:description" content="LinuxLinux文件基本属性使用ll或者ls –l命令来显示一个文件的属性以及文件所属的用户和组对于 root 用户来说，一般情况下，文件的权限对其不起作用更改文件属性（略）">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/06/363003_1227493859FdXT.png">
+<meta property="article:published_time" content="2020-06-01T01:17:58.583Z">
+<meta property="article:modified_time" content="2020-06-01T00:57:45.152Z">
+<meta property="article:author" content="YY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2014/06/363003_1227493859FdXT.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog1_Yy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog1_Yy</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux-Git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/01/Linux-Git/" class="article-date">
+  <time datetime="2020-06-01T01:17:58.583Z" itemprop="datePublished">2020-06-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux-Git
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="Linux文件基本属性"><a href="#Linux文件基本属性" class="headerlink" title="Linux文件基本属性"></a>Linux文件基本属性</h2><p>使用ll或者ls –l命令来显示一个文件的属性以及文件所属的用户和组<br><img src="https://www.runoob.com/wp-content/uploads/2014/06/363003_1227493859FdXT.png" alt="文件属性规则"><br>对于 root 用户来说，一般情况下，文件的权限对其不起作用<br>更改文件属性（略）</p>
+<a id="more"></a>
+<h2 id="Linux系统目录结构："><a href="#Linux系统目录结构：" class="headerlink" title="Linux系统目录结构："></a>Linux系统目录结构：</h2><pre><code>/  系统根目录
+./  当前目录
+../  上级目录</code></pre><h2 id="Linux-文件与目录管理"><a href="#Linux-文件与目录管理" class="headerlink" title="Linux 文件与目录管理"></a>Linux 文件与目录管理</h2><p>绝对路径：<br>路径的写法，由根目录 / 写起，例如： /usr/share/doc 这个目录。<br>相对路径：<br>路径的写法，不是由 / 写起，例如由 /usr/share/doc 要到 /usr/share/man 底下时，可以写成： cd ../man<br>    ls: 列出目录及文件名<br>    cd：切换目录<br>    pwd：显示目前的目录<br>    mkdir：创建一个新的目录<br>    rmdir：删除一个空的目录<br>    cp: 复制文件或目录<br>    rm: 移除文件或目录<br>    mv: 移动文件与目录，或修改文件与目录的名称<br>    man: 各个命令的使用文档</p>
+<h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><p>选项与参数<br>    -a ：全部的文件，连同隐藏文件( 开头为 . 的文件) 一起列出来(常用)<br>    -d ：仅列出目录本身，而不是列出目录内的文件数据(常用)<br>    -l ：长数据串列出，包含文件的属性与权限等等数据；(常用)</p>
+<h2 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a>Linux指令</h2><p>shutdown 关机指令，可以man shutdown 来看一下帮助文档。<br>    shutdown –h now 立马关机<br>    reboot 就是重启，等同于 shutdown –r now</p>
+<pre><code>[Tab]      ## 接在一串指令的第一个字的后面，则为『命令补全』
+[Tab]      ## 接在一串指令的第二个字以后时，则为『文件补齐』</code></pre><p>如果在Linux 底下输入了错误的指令或参数，想让当前的程序『停掉』的话，可以输入<br>    [Ctrl] + c<br>键盘输入结束(End Of File, EOF 或 End Of Input),也可以用来取代 exit 的输入,例如想要直接离开文字接口可以输入<br>    [Ctrl] + d   ## 相当于输入 exit</p>
+<pre><code>cat  由第一行开始显示文件内容
+tac  从最后一行开始显示，可以看出 tac 是 cat 的倒着写！</code></pre><p>…</p>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="Git一般工作流程"><a href="#Git一般工作流程" class="headerlink" title="Git一般工作流程"></a>Git一般工作流程</h2><pre><code>克隆 Git 资源作为工作目录。
+在克隆的资源上添加或修改文件。
+如果其他人修改了，你可以更新资源。
+在提交前查看修改。
+提交修改。
+在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。</code></pre><h2 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h2><pre><code>git init 初始化当前目录为一个Git仓库
+git init newrepo 创建指定目录的Git仓库
+git add filename 添加新文件
+git commit -m &quot;Adding files&quot; 提交到仓库</code></pre><p>…</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/01/Linux-Git/" data-id="ckavu6poy0003agua9gw48vg2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/01/8086%E6%B1%87%E7%BC%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          8086汇编
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/01/ADworld-wp/">ADworld-wp</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/IDA/">IDA</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/8086%E6%B1%87%E7%BC%96/">8086汇编</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/Linux-Git/">Linux-Git</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 YY<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ADworld-wp | Blog1_Yy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="open-source拿到一段C源码，进行代码分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ADworld-wp">
+<meta property="og:url" content="http://yoursite.com/2020/06/01/ADworld-wp/index.html">
+<meta property="og:site_name" content="Blog1_Yy">
+<meta property="og:description" content="open-source拿到一段C源码，进行代码分析">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/ADworld-wp/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/ADworld-wp/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/ADworld-wp/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/ADworld-wp/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/01/ADworld-wp/5.jpg">
+<meta property="article:published_time" content="2020-06-01T01:20:41.149Z">
+<meta property="article:modified_time" content="2020-06-01T01:46:52.346Z">
+<meta property="article:author" content="YY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/01/ADworld-wp/1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog1_Yy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog1_Yy</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ADworld-wp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/01/ADworld-wp/" class="article-date">
+  <time datetime="2020-06-01T01:20:41.149Z" itemprop="datePublished">2020-06-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ADworld-wp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="open-source"><a href="#open-source" class="headerlink" title="open-source"></a>open-source</h1><p>拿到一段C源码，进行代码分析</p>
+<a id="more"></a>
+<p><img src="/2020/06/01/ADworld-wp/1.jpg" alt="源码1"><br>逆向思维从后往前分析，不会的函数就查，得到hash的十进制结果<br><img src="/2020/06/01/ADworld-wp/2.jpg" alt="计算结果1"><br>十进制转16进制得到flag：c0ffee</p>
+<h1 id="simple-unpack"><a href="#simple-unpack" class="headerlink" title="simple-unpack"></a>simple-unpack</h1><p>我尝试无果，参考wp如下：<br>exeinfoPE查壳发现是upx壳，用upx unpacker工具脱壳，再用IDA打开直接得到flag</p>
+<h1 id="logmein"><a href="#logmein" class="headerlink" title="logmein"></a>logmein</h1><p>用IDA打开，进入main函数，f5反编译，应该是分析代码就能得到flag<br><img src="/2020/06/01/ADworld-wp/3.jpg" alt="源码2"><br>但是不会做…<br>用C语言写脚本，运行得到要你输入的字符串s：<br><img src="/2020/06/01/ADworld-wp/4.jpg" alt="运行结果1"></p>
+<h1 id="insanity"><a href="#insanity" class="headerlink" title="insanity"></a>insanity</h1><p>用IDA打开，shift+f12打开string窗口并找出所有字符串（以后这应该成为默认常规操作）<br>直接找到了flag</p>
+<h1 id="getit"><a href="#getit" class="headerlink" title="getit"></a>getit</h1><p>用IDA打开，还是代码分析和复现</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;Windows.h&gt;
+
+#pragma warning(disable:4996)
+
+int main(void)
+{
+    char v3;
+    __int64 v5;
+    char s[] = &quot;c61b68366edeb7bdce3c6820314b7498&quot;;
+    char t[] = &quot;SharifCTF{????????????????????????????????}&quot;;
+
+    v5 = 0;
+    while (v5 &lt; strlen(s)) {
+        if (v5 &amp; 1)
+            v3 = 1;
+        else
+            v3 = -1;
+        *(t + v5 + 10) = s[v5] + v3;
+        v5++;
+    }
+    printf(&quot;%s&quot;, t);
+    system(&quot;PAUSE&quot;);
+    return 0;
+}</code></pre><p>运行结果：<br><img src="/2020/06/01/ADworld-wp/5.jpg" alt="运行结果2"></p>
+<h1 id="python-trade"><a href="#python-trade" class="headerlink" title="python-trade"></a>python-trade</h1><p>猜测是python代码分析，自己做的时候死脑筋了，只会用IDA<br>源文件是.pyc，pyc文件是python编译产生的中间文件<br>这里应该用pyc反编译工具，有相应的在线工具：<a href="https://tool.lu/pyc/" target="_blank" rel="noopener">https://tool.lu/pyc/</a><br>（不知道为什么我在使用这个工具的时候代码有重复）</p>
+<pre><code>import base64
+
+def encode(message):
+    s = &apos;&apos;
+    for i in message:
+        x = ord(i) ^ 32
+        x = x + 16
+        s += chr(x)
+
+    return base64.b64encode(s)
+
+correct = &apos;XlNkVmtUI1MgXWBZXCFeKY+AaXNt&apos;
+flag = &apos;&apos;
+print &apos;Input flag:&apos;
+flag = raw_input()
+if encode(flag) == correct:
+    print &apos;correct&apos;
+else:
+    print &apos;wrong&apos;</code></pre><p>分析代码，correct字符串被函数encode加密了，写个反过来的程序就行<br>然后不会写（</p>
+<pre><code>def decode(message):
+    s = ‘‘
+    imessage = base64.b64decode(message)
+
+    for i in imessage:
+        x = ord(i) - 16
+        x = x ^ 32
+        s += chr(x)
+
+    return s
+
+correct = ‘XlNkVmtUI1MgXWBZXCFeKY+AaXNt‘</code></pre><p>参照别人的脚本做出来得到flag<br>我确实是菜:(</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/01/ADworld-wp/" data-id="ckavu6pos0002aguaerdtagvc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/01/IDA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">IDA</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/01/ADworld-wp/">ADworld-wp</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/IDA/">IDA</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/8086%E6%B1%87%E7%BC%96/">8086汇编</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/Linux-Git/">Linux-Git</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 YY<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
